@@ -17,28 +17,27 @@ import java.util.ArrayList;
  */
 public class LibraryFragment extends Fragment {
 
-
     public LibraryFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_library, container, false);
 
-        final ArrayList<String> artists = new ArrayList<>();
-        for (int i = 1; i <= 100; i++) {
-            artists.add("Artist " + i);
-        }
-        final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, artists);
+        final ArrayList<LibraryItem> myLibrary = new ArrayList<>();
+        myLibrary.add(new LibraryItem(R.string.library_artists, R.drawable.ic_people_black_24dp));
+        myLibrary.add(new LibraryItem(R.string.library_albums, R.drawable.ic_album_black_24dp));
+        myLibrary.add(new LibraryItem(R.string.library_songs, R.drawable.ic_music_note_black_24dp));
+
+        // TODO: Create layout for items in library list plus an adapter
+        final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, myLibrary);
         final ListView listView = rootView.findViewById(R.id.library_item_list);
         listView.setAdapter(adapter);
 
-
-        // Inflate the layout for this fragment
         return rootView;
     }
-
 }
