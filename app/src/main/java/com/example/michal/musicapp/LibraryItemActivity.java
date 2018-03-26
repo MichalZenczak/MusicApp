@@ -23,7 +23,5 @@ public class LibraryItemActivity extends AppCompatActivity {
 
         //TODO: create new activities for the rest of library items
         //TODO: create a list of artist/songs etc. with for loop and a category name of the clicked item above the list
-
-
     }
 }
