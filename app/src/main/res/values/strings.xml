@@ -9,5 +9,6 @@
     <string name="library_artists">Artists</string>
     <string name="library_albums">Albums</string>
     <string name="library_songs">Songs</string>
+    <string name="library_item_image_description">Album icon</string>
 
 </resources>

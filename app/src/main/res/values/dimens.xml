@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="library_item_text_size">20sp</dimen>
+    <dimen name="library_item_margin">8dp</dimen>
+    <dimen name="library_item_image_height">48dp</dimen>
+    <dimen name="library_item_image_width">48dp</dimen>
+</resources>

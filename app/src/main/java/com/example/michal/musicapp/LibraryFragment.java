@@ -34,9 +34,10 @@ public class LibraryFragment extends Fragment {
         myLibrary.add(new LibraryItem(R.string.library_songs, R.drawable.ic_music_note_black_24dp));
 
         // TODO: Create layout for items in library list plus an adapter
-        final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, myLibrary);
+        final LibraryItemAdapter libraryItemAdapter = new LibraryItemAdapter(getActivity(), myLibrary);
+
         final ListView listView = rootView.findViewById(R.id.library_item_list);
-        listView.setAdapter(adapter);
+        listView.setAdapter(libraryItemAdapter);
 
         return rootView;
     }
