@@ -12,13 +12,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class LibraryItemAdapter extends ArrayAdapter<LibraryItem> {
-
+public class LibraryItemAdapter extends ArrayAdapter<LibraryListItem> {
 
     public LibraryItemAdapter(Activity context, ArrayList myLibrary){
         super(context,0, myLibrary);
     }
-
 
     @NonNull
     @Override
@@ -29,7 +27,7 @@ public class LibraryItemAdapter extends ArrayAdapter<LibraryItem> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.library_item, parent, false);
         }
         // Get current Item object in the list at this position
-        LibraryItem currentItem = getItem(position);
+        LibraryListItem currentItem = getItem(position);
         // Find the ImageView ID of the list item object
         ImageView currentItemImage = listItemView.findViewById(R.id.library_item_image);
         // Get the image of current item object and set it to the ImageView
