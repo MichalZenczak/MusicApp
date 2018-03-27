@@ -5,25 +5,26 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <TextView
         android:id="@+id/selected_item_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="17sp"
-        android:padding="15dp" />
+        android:padding="@dimen/library_item_margin"
+        android:textColor="@color/black"
+        android:textSize="@dimen/library_item_text_size"
+        android:textStyle="bold" />
 
     <View
         android:id="@+id/divider_one"
         android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_height="1dp"
+        android:background="?android:attr/dividerVertical" />
 
     <ListView
         android:id="@+id/library_selected_item_list"
-        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:dividerHeight="1dp" >
-    </ListView>
+        android:layout_height="match_parent"
+        android:dividerHeight="@dimen/divider_height"/>
 
 </LinearLayout>

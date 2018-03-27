@@ -4,4 +4,5 @@
     <dimen name="library_item_margin">8dp</dimen>
     <dimen name="library_item_image_height">48dp</dimen>
     <dimen name="library_item_image_width">48dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
 </resources>
