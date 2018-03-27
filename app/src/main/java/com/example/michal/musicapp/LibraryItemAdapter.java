@@ -36,7 +36,6 @@ public class LibraryItemAdapter extends ArrayAdapter<LibraryListItem> {
         TextView currentItemText = listItemView.findViewById(R.id.library_item_text);
         //Get the text of the current item object and set it to the TextView
         currentItemText.setText(currentItem.getItemTextResourceId());
-
         return listItemView;
     }
 }

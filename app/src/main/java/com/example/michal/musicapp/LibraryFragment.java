@@ -1,6 +1,5 @@
 package com.example.michal.musicapp;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,10 +12,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class LibraryFragment extends Fragment {
 
     public LibraryFragment() {
@@ -26,37 +21,28 @@ public class LibraryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_library, container, false);
-
+        // Populate the array with custom class objects
         final ArrayList<LibraryListItem> myLibrary = new ArrayList<>();
         myLibrary.add(new LibraryListItem(R.string.library_artists, R.drawable.ic_people_black_24dp));
         myLibrary.add(new LibraryListItem(R.string.library_albums, R.drawable.ic_album_black_24dp));
         myLibrary.add(new LibraryListItem(R.string.library_songs, R.drawable.ic_music_note_black_24dp));
-
+        // A custom adapter to populate the ListView with the objects in the array
         final LibraryItemAdapter libraryItemAdapter = new LibraryItemAdapter(getActivity(), myLibrary);
         final ListView listView = rootView.findViewById(R.id.library_item_list);
         listView.setAdapter(libraryItemAdapter);
-
+        // Set clickListeners on the list items
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Toast myToast = Toast.makeText(getContext(),"Item clicked!", Toast.LENGTH_SHORT);
-                myToast.show();
-
                 LibraryListItem selectedItem = myLibrary.get(position);
-
-                Intent myIntent = new Intent(getContext(),LibraryItemActivity.class);
+                // When an Item in the list is clicked start a new activity
+                Intent myIntent = new Intent(getContext(), LibraryItemActivity.class);
                 myIntent.putExtra("selectedItem", selectedItem.getItemTextResourceId());
                 startActivity(myIntent);
-
-
             }
         });
-
-
         return rootView;
     }
 }
