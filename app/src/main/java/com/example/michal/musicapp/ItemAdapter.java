@@ -3,6 +3,7 @@ package com.example.michal.musicapp;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,11 +40,16 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         currentItemText1.setText(currentItem.getItemText1());
 
         TextView currentItemText2 = listItemView.findViewById(R.id.item_text_2);
-        currentItemText2.setText(currentItem.getItemText2());
+        if (currentItem.isItemText2Empty()){
+            currentItemText2.setText(currentItem.getItemText2());
+        }else{
+            currentItemText2.setVisibility(View.GONE);
+            currentItemText1.setGravity(Gravity.CENTER_VERTICAL);
+        }
 
         ImageView currentItemImage = listItemView.findViewById(R.id.item_image);
         if (currentItem.hasImage()){
-            currentItemImage.setImageResource(currentItem.getImageresourceId());
+            currentItemImage.setImageResource(currentItem.getImageResourceId());
         }else {
             currentItemImage.setVisibility(View.GONE);
         }

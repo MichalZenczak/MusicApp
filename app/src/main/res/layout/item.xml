@@ -13,18 +13,23 @@
     <LinearLayout
         android:layout_toEndOf="@id/item_image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/library_item_image_height"
+        android:layout_margin="@dimen/library_item_margin"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/item_text_1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"/>
 
         <TextView
             android:id="@+id/item_text_2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="top"/>
 
     </LinearLayout>
 

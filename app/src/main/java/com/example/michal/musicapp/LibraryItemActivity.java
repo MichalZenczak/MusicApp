@@ -25,13 +25,29 @@ public class LibraryItemActivity extends AppCompatActivity {
 
         if (getResources().getString(selectedItem).equals(getResources().getString(R.string.library_albums))){
             ArrayList<Item> selectedItemList = new ArrayList<>();
-
-            //TODO: sprawdzic dlaczego nie da sie dodac obrazka ???
             for (int i=1; i<=20; i++){
                 selectedItemList.add(new Item(makeSingular(getResources().getString(selectedItem)) + " " + i,
-                        makeSingular(getResources().getString(R.string.library_artists)) + " " + i), R.drawable.ic_album_black_24dp));
+                        makeSingular(getResources().getString(R.string.library_artists)) + " " + i,
+                        R.drawable.ic_album_black_24dp));
             }
-
+            ListView listView = findViewById(R.id.library_selected_item_list);
+            ItemAdapter adapter = new ItemAdapter(getApplicationContext(), selectedItemList);
+            listView.setAdapter(adapter);
+        }else if (getResources().getString(selectedItem).equals(getResources().getString(R.string.library_artists))){
+            ArrayList<Item> selectedItemList = new ArrayList<>();
+            for (int i=1; i<=20; i++){
+                selectedItemList.add(new Item(makeSingular(getResources().getString(selectedItem)) + " " + i,
+                        R.drawable.ic_people_black_24dp));
+            }
+            ListView listView = findViewById(R.id.library_selected_item_list);
+            ItemAdapter adapter = new ItemAdapter(getApplicationContext(), selectedItemList);
+            listView.setAdapter(adapter);
+        }else if (getResources().getString(selectedItem).equals(getResources().getString(R.string.library_songs))){
+            ArrayList<Item> selectedItemList = new ArrayList<>();
+            for (int i=1; i<=20; i++){
+                selectedItemList.add(new Item(getResources().getString(R.string.song_title) + " " + i,
+                        makeSingular(getResources().getString(R.string.library_artists)) + " " + i));
+            }
             ListView listView = findViewById(R.id.library_selected_item_list);
             ItemAdapter adapter = new ItemAdapter(getApplicationContext(), selectedItemList);
             listView.setAdapter(adapter);
