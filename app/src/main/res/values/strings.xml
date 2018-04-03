@@ -11,5 +11,8 @@
     <string name="library_songs">Songs</string>
     <string name="library_item_image_description">Album icon</string>
     <string name="song_title">Title</string>
-
+    <string name="play_toast">Playing!</string>
+    <string name="stop_toast">Stopped playing!</string>
+    <string name="next_toast">Skipping to next!</string>
+    <string name="previous_toast">Skipping to previous!</string>
 </resources>
