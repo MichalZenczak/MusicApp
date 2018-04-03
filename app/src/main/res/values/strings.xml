@@ -4,8 +4,8 @@
     <string name="menu_favorites">Favorites</string>
     <string name="menu_search">Search</string>
     <string name="fragment_library">Library</string>
-    <string name="fragment_search">Search</string>
-    <string name="fragment_favorites">Favorites</string>
+    <string name="fragment_search">The Search tab is under construction</string>
+    <string name="fragment_favorites">The Favorites tab is under construction</string>
     <string name="library_artists">Artists</string>
     <string name="library_albums">Albums</string>
     <string name="library_songs">Songs</string>
