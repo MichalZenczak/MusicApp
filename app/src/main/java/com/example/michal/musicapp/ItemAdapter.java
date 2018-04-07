@@ -13,17 +13,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by michal on 3/27/18.
- */
-
 public class ItemAdapter extends ArrayAdapter<Item> {
-
 
     public ItemAdapter(Context context, ArrayList selectedItemList){
         super(context,0,selectedItemList);
     }
-
 
     @NonNull
     @Override
@@ -35,7 +29,6 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         }
 
         Item currentItem = getItem(position);
-
         TextView currentItemText1 = listItemView.findViewById(R.id.item_text_1);
         currentItemText1.setText(currentItem.getItemText1());
 
@@ -53,7 +46,6 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         }else {
             currentItemImage.setVisibility(View.GONE);
         }
-
         return listItemView;
     }
 }

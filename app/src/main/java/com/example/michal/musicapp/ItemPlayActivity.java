@@ -7,6 +7,8 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ItemPlayActivity extends AppCompatActivity {
@@ -38,6 +40,21 @@ public class ItemPlayActivity extends AppCompatActivity {
 
         Intent myIntent = getIntent();
         mSelectedItem = myIntent.getIntExtra("selectedItem",0);
+        String text1 = myIntent.getStringExtra("text1");
+        String text2 = myIntent.getStringExtra("text2");
+
+        ImageView image = findViewById(R.id.activity_item_play_image);
+        if (getResources().getString(mSelectedItem).equals(getResources().getString(R.string.library_albums))){
+            image.setImageResource(R.drawable.ic_album_black_24dp);
+        }else if (getResources().getString(mSelectedItem).equals(getResources().getString(R.string.library_artists))){
+            image.setImageResource(R.drawable.ic_people_black_24dp);
+        }else if (getResources().getString(mSelectedItem).equals(getResources().getString(R.string.library_songs))){
+            image.setImageResource(R.drawable.ic_music_note_black_24dp);
+        }
+        TextView textView1 = findViewById(R.id.activity_item_play_text1);
+        textView1.setText(text1);
+        TextView textView2 = findViewById(R.id.activity_item_play_text2);
+        textView2.setText(text2);
 
         Button playButton = findViewById(R.id.button_play);
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +63,6 @@ public class ItemPlayActivity extends AppCompatActivity {
                 Toast playToast = Toast.makeText(ItemPlayActivity.this, getResources().getString(R.string.play_toast), Toast.LENGTH_SHORT );
                 playToast.setGravity(Gravity.CENTER,0,0);
                 playToast.show();
-
             }
         });
 

@@ -1,14 +1,9 @@
 package com.example.michal.musicapp;
 
-/**
- * Created by michal on 3/27/18.
- */
-
 public class Item {
 
     private String mItemText1;
     private String mItemText2 = null;
-
     private int mImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
@@ -39,5 +34,4 @@ public class Item {
             return false;
         }
     }
-
 }

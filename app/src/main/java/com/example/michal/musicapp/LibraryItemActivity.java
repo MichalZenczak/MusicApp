@@ -2,22 +2,18 @@ package com.example.michal.musicapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class LibraryItemActivity extends AppCompatActivity {
 
     private int mSelectedItem;
     private static final int ITEM_PLAY_ACTIVITY_REQUEST_CODE = 0;
-
 
     /**
      * This method is called when the child activity is finished. It retrieves the selectedItem ID back.
@@ -39,9 +35,7 @@ public class LibraryItemActivity extends AppCompatActivity {
 
         Intent myIntent = getIntent();
         mSelectedItem = myIntent.getIntExtra("selectedItem",0);
-
         setContentView(R.layout.activity_item_library);
-
         TextView selectedItemName = findViewById(R.id.selected_item_id);
         selectedItemName.setText(String.valueOf(getResources().getString(mSelectedItem)));
 
@@ -61,20 +55,22 @@ public class LibraryItemActivity extends AppCompatActivity {
                 selectedItemList.add(new Item(getResources().getString(R.string.song_title) + " " + i, makeSingular(getResources().getString(R.string.library_artists)) + " " + i));
             }
         }
-        ListView listView = findViewById(R.id.library_selected_item_list);
+        final ListView listView = findViewById(R.id.library_selected_item_list);
         ItemAdapter adapter = new ItemAdapter(getApplicationContext(), selectedItemList);
         listView.setAdapter(adapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Item itemClicked = selectedItemList.get(position);
                 Intent myIntent = new Intent(LibraryItemActivity.this, ItemPlayActivity.class);
-                myIntent.putExtra("selectedItem",mSelectedItem);
+                myIntent.putExtra("selectedItem", mSelectedItem);
+                myIntent.putExtra("text1", itemClicked.getItemText1());
+                myIntent.putExtra("text2", itemClicked.getItemText2());
                 startActivityForResult(myIntent, ITEM_PLAY_ACTIVITY_REQUEST_CODE);
             }
         });
-
     }
+
     /**
      * This method takes a string and removes the last character from it.
      * @param plural a string from which to remove the last character
@@ -83,5 +79,4 @@ public class LibraryItemActivity extends AppCompatActivity {
     private String makeSingular(String plural){
         return plural.substring(0, plural.length() - 1);
     }
-
 }
