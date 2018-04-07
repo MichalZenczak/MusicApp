@@ -1,18 +1,43 @@
 package com.example.michal.musicapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 public class ItemPlayActivity extends AppCompatActivity {
 
+    private int mSelectedItem;
+
+    /**
+     *This method is called when the Up Button is clicked. An intent is created with a RESULT_OK and
+     *the current activity is finished.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                Intent myIntent = new Intent(ItemPlayActivity.this, LibraryItemActivity.class);
+                myIntent.putExtra("selectedItem",mSelectedItem);
+                setResult(RESULT_OK,myIntent);
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_play);
+
+        Intent myIntent = getIntent();
+        mSelectedItem = myIntent.getIntExtra("selectedItem",0);
 
         Button playButton = findViewById(R.id.button_play);
         playButton.setOnClickListener(new View.OnClickListener() {

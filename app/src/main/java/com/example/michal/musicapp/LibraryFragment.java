@@ -39,6 +39,7 @@ public class LibraryFragment extends Fragment {
                 LibraryListItem selectedItem = myLibrary.get(position);
                 // When an Item in the list is clicked start a new activity
                 Intent myIntent = new Intent(getContext(), LibraryItemActivity.class);
+                // Put extra information to the intent in order to receive it in the new activity
                 myIntent.putExtra("selectedItem", selectedItem.getItemTextResourceId());
                 startActivity(myIntent);
             }

@@ -15,33 +15,34 @@ import java.util.ArrayList;
 
 public class LibraryItemActivity extends AppCompatActivity {
 
-    //This part of code is new
     private int mSelectedItem;
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt("selectedItem", mSelectedItem);
-    }
+    private static final int ITEM_PLAY_ACTIVITY_REQUEST_CODE = 0;
 
+
+    /**
+     * This method is called when the child activity is finished. It retrieves the selectedItem ID back.
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ITEM_PLAY_ACTIVITY_REQUEST_CODE){
+            if (resultCode == RESULT_OK){
+                mSelectedItem = data.getIntExtra("selectedItem",0);
+            }
+        }
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         final int LIST_ITEM_COUNT = 20;
-
-        //This if statement is new
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null){
-            mSelectedItem = savedInstanceState.getInt("selectedItem");
-        }else {
-            Intent myIntent = getIntent();
-            mSelectedItem = getSelectedItem(myIntent);
-        }
+
+        Intent myIntent = getIntent();
+        mSelectedItem = myIntent.getIntExtra("selectedItem",0);
 
         setContentView(R.layout.activity_item_library);
 
         TextView selectedItemName = findViewById(R.id.selected_item_id);
-
-        //This line of code is new
         selectedItemName.setText(String.valueOf(getResources().getString(mSelectedItem)));
 
         final ArrayList<Item> selectedItemList = new ArrayList<>();
@@ -67,16 +68,11 @@ public class LibraryItemActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Item itemClicked = selectedItemList.get(position);
-
                 Intent myIntent = new Intent(LibraryItemActivity.this, ItemPlayActivity.class);
-                //myIntent.putExtra("selectedItem", selectedItem.getItemTextResourceId());
-                startActivity(myIntent);
+                myIntent.putExtra("selectedItem",mSelectedItem);
+                startActivityForResult(myIntent, ITEM_PLAY_ACTIVITY_REQUEST_CODE);
             }
         });
-
-
-
 
     }
     /**
@@ -88,8 +84,4 @@ public class LibraryItemActivity extends AppCompatActivity {
         return plural.substring(0, plural.length() - 1);
     }
 
-    // This method is new
-    private int getSelectedItem(Intent myIntent){
-        return myIntent.getIntExtra("selectedItem",0);
-    }
 }
